@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .design{
+    position: relative;
+    align-content: center;
+    background-color : white;
+}
+
+.button1 {
+    background-color: #6df5a1; 
+    border: 1px solid black;
+    color: rgb(11, 7, 7);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+ .box{
+    margin:0 auto;
+    width:350px; 
+    padding:20px;
+    background:#f9f3a6;
+    border:1px solid #333;
+  }
+
+  </style>
+  <title>Email Form</title>
+</head>
+<body class="design"><center>
+  <h1>Email Form</h1>
+  <form class="box" id="emailForm">
+    <div>
+      <label for="email"><b>Email:</b></label>&nbsp;&nbsp;
+      <input type="email" id="email" required>
+    </div><br>
+    <div>
+      <label for="subject"><b>Subject:</b></label>
+      <input type="text" id="subject" required>
+    </div><br>
+    <div>
+      <label for="content"><center><b>Content:</b></label>
+      <textarea id="content" required></textarea>
+    </div><br>
+    <button class ="button1" type="submit"><b>Send Mail</b></button>
+  </form>
+</center>
+  <script>
+    document.getElementById('emailForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const content = document.getElementById('content').value;
+
+      const data = {
+        email: email,
+        subject: subject,
+        content: content
+      };
+
+      fetch('/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.text())
+      .then(result => {
+        alert(result);
+        document.getElementById('emailForm').reset();
+      })
+      .catch(error => {
+        console.error('Error sending email:', error);
+        alert('An error occurred while sending the email.');
+      });
+    });
+  </script>
+</body>
+</html>
