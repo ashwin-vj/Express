@@ -2,14 +2,27 @@
 <html>
 <head>
   <style>
+
+h1{ 
+  padding-top: 220px 0;
+  border:1px solid #000000;
+  margin:-25px ;
+  margin-bottom: none;
+    width:350px; 
+    color: #0d0b0e;
+    padding: 10px 0;
+    background:#9fccdb;
+}
+
     .design{
     position: relative;
+    padding: 70px 0;
     align-content: center;
-    background-color : white;
+    background-color : rgb(151, 155, 171);
 }
 
 .button1 {
-    background-color: #6df5a1; 
+    background-color: #2aadf3; 
     border: 1px solid black;
     color: rgb(11, 7, 7);
     padding: 10px 20px;
@@ -21,19 +34,23 @@
   }
 
  .box{
+  
+    justify-content: center;
     margin:0 auto;
     width:350px; 
-    padding:20px;
-    background:#f9f3a6;
-    border:1px solid #333;
+    padding: 70px 0;
+    background:#ffffff;
+    border:1px solid #000000;
   }
+  
 
   </style>
   <title>Email Form</title>
 </head>
 <body class="design"><center>
-  <h1>Email Form</h1>
+  <h1 class="emcenter" >Email Form</h1><br>
   <form class="box" id="emailForm">
+    
     <div>
       <label for="email"><b>Email:</b></label>&nbsp;&nbsp;
       <input type="email" id="email" required>

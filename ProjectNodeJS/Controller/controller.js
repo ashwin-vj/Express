@@ -1,23 +1,24 @@
 const nodemailer = require('nodemailer');
 
-const sendEmailController = (req, res) => {
+const sendEmailController = (req, res) => {        // controller function to send email
   const { email, subject, content } = req.body;
 
-  const transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({   // created a nodemailer transporter with SMTP(gmail) app settings
     service: 'gmail',
     auth: {
-      user: 'ashwinvijay108@gmail.com',     
+      user: 'ashwinvijay108@gmail.com',    
       pass: 'gngabdkgbefgyver'     
     }
   });
 
   const mailOptions = {
-    from: 'ashwinvijay108@gmail.com',    
+    from: 'ashwinvijay108@gmail.com',   
     to: email,
     subject: subject,
     text: content
   };
 
+  // in below code sending the email using nodemailer
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Error sending email:', error);
@@ -30,10 +31,6 @@ const sendEmailController = (req, res) => {
 };
 
 module.exports = sendEmailController;
-
-
-
-
 
 
 
